@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Idea Generator</title>
+</head>
+<body>
+<h1>Welcome to Idea Generator</h1>
+
+<!-- Button to trigger idea generation -->
+<form action="/generateIdea" method="get">
+    <button type="submit">Generate Idea</button>
+</form>
+
+<!-- Container to display the generated ideas -->
+<div th:if="${ideas != null}">
+    <h2>Your Ideas:</h2>
+    <div th:each="idea : ${ideas}">
+        <div th:if="${idea != null}">
+            <strong><span th:text="${idea.number} + '. ' + ${idea.title}"></span></strong>
+            <p><strong>Slogan:</strong> <span th:text="${idea.slogan}"></span></p>
+            <p><strong>Short Description:</strong> <span th:text="${idea.shortDescription}"></span></p>
+            <p><strong>Detailed Description:</strong> <span th:text="${idea.detailedDescription}"></span></p>
+            <p><strong>Elevator Pitch:</strong> <span th:text="${idea.elevatorPitch}"></span></p>
+            <p><strong>Difficulty:</strong> <span th:text="${idea.difficulty}"></span></p>
+            <p><strong>Chance of Success:</strong> <span th:text="${idea.successChance}"></span></p>
+            <p><strong>Tags:</strong>
+                <span th:each="tag : ${idea.tags}" th:text="'#' + ${tag} + ' '"></span>
+            </p>
+            <div style="height: 5px; background-color: #000000; margin-bottom: 5px"></div>
+        </div>
+        <div th:if="${idea != null}">
+            <h3 th:if="${idea.number == 0}"> There are too many request at the moment, try again later... </h3>
+        </div>
+    </div>
+</div>
+</body>
+</html>
