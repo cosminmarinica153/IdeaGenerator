@@ -1,4 +1,4 @@
-# Random API Selector with Groq Cloud Integration
+# Idea Generator Groq Cloud Integration
 
 This project is a Java SpringBoot web application that randomly selects 5-10 APIs from a collection of over 700 APIs. These APIs are added to a pre-made prompt, which is then sent to the **Groq Cloud API**. The application receives the response from Groq Cloud, parses the output, and displays the results to the user on the web interface.
 
